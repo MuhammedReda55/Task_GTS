@@ -1,0 +1,25 @@
+﻿using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
+using System.ComponentModel.DataAnnotations;
+
+namespace Task_GTS.Models.DTOs
+{
+    public class ProductWithDtos
+    {
+        public int Id { get; set; }
+
+        [Required]
+        [MinLength(3, ErrorMessage = "Minimum length must be 3")]
+        [MaxLength(50, ErrorMessage = "Maximum length must be 50")]
+        public string Name { get; set; }
+        public string? Description { get; set; }
+        [Range(0, 100000)]
+        public decimal Price { get; set; }
+
+        [Range(0, 1000)]
+        public int Quantity { get; set; }
+        [Required]
+        public int CategoryId { get; set; }
+
+        public IFormFile? file { get; set; }
+    }
+}
